@@ -21,6 +21,8 @@ fprintf('var7 ='); disp(var7)
 whos
 %}
 
+
+%{
 % Example 1.2: Conversion of Data Types
 clc;clear;
 % Number to text
@@ -38,3 +40,40 @@ var4_conv = string(var4);   % Conversion into string
 fprintf('Number to text conversion:\n');
 fprintf('----------------------------------\n');
 whos
+
+% Text to number
+clear;
+var5 = '4';                 % Character
+var5_conv = str2num(var5);  % Conversion into number
+
+var6 = "3.1416";                % String
+var6_conv = str2double(var6);   % Conversion into double
+fprintf('\nText to number conversion:\n');
+fprintf('---------------------------------\n');
+whos
+%}
+
+%{
+% Example 1.3: Supression and diary
+% Supressing output
+% Without semicolon
+a = [1 2 3 4]
+
+% With semicolon
+a = [1 2 3 4];
+
+% diary function
+clc; clear;
+a = input('Enter a:');
+b = input('Enter b:');
+sum = a + b;
+fprintf('Summation: %d\n', sum);
+% diary('diaryFIle.txt');
+%}
+
+% Example 1.4: Disp function
+clear; clc;
+var = 5.25;
+disp('Usage of disp() function:');
+disp(var);
+disp(['The value of the variable is: ', num2str(var)]);
