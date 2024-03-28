@@ -1,6 +1,8 @@
-%{
+%%
+% Examples - chapter 1
 % Example 1.1: Different Data Types
 clc;clear;
+disp('Example 1.1: Different Data Types');
 % Numeric data types: Integer, Float, Logical
 var1 = int8(2);     % Integer of signed 8-bit
 var2 = 10.5;        % Float: Double
@@ -19,12 +21,11 @@ fprintf('var5 ='); disp(var5)
 fprintf('var6 ='); disp(var6)
 fprintf('var7 ='); disp(var7)
 whos
-%}
 
-
-%{
+%%
 % Example 1.2: Conversion of Data Types
 clc;clear;
+disp('Example 1.2: Conversion of Data Types');
 % Number to text
 var1 = int8(5);             % Integer
 var1_conv = int2str(var1);  % Conversion into character
@@ -51,10 +52,11 @@ var6_conv = str2double(var6);   % Conversion into double
 fprintf('\nText to number conversion:\n');
 fprintf('---------------------------------\n');
 whos
-%}
 
-%{
+%%
 % Example 1.3: Supression and diary
+clc; clear;
+disp('Example 1.3: Supression and diary');
 % Supressing output
 % Without semicolon
 a = [1 2 3 4]
@@ -63,17 +65,49 @@ a = [1 2 3 4]
 a = [1 2 3 4];
 
 % diary function
-clc; clear;
 a = input('Enter a:');
 b = input('Enter b:');
 sum = a + b;
 fprintf('Summation: %d\n', sum);
 % diary('diaryFIle.txt');
-%}
 
+%%
 % Example 1.4: Disp function
 clear; clc;
+disp('Example 1.4: Disp function');
 var = 5.25;
 disp('Usage of disp() function:');
 disp(var);
 disp(['The value of the variable is: ', num2str(var)]);
+disp('----------------------------------------------');
+
+%%
+% Exercises - chapter 1
+clear; clc;
+%{
+Exercise 1
+1. Write down some of the notable applications of MATLAB in engineering.
+2. What are the major data types in MATLAB? How are they represented in
+MATLAB programming?
+3. Mention the usage of the following commands/functions with examples where
+applicable:
+(a) clc
+(b) num2str()
+(c) str2double()
+(d) int8()
+(e) disp()
+%}
+4. Perform the following operations in MATLAB and save the results in a variable.
+Demonstrate the variables using “whos” command:
+(a) 2*4^2
+(b) (2*4)^2
+(c) 503+224604
+(d) (10^3)/(9*2)
+(e) 6.25*0.42^3.56
+(f) Save “MATLAB is fun!” in a variable
+5. Take two numerical inputs from the user and save them in variables num1 and
+num2. Perform the following operations and record the session using the diary
+function:
+(i) num1/num2
+(ii) num1\num2
+Do they produce the same result? If not, why?
