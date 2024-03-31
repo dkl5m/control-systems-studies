@@ -64,10 +64,33 @@ for i=1:length(a)
 end
 
 %%
-% Examples 3.4: User Defined Function
-clear; clc;
-function [out1, out2] = myfunction(input1, input2)
-out1 = 2*input1;
-out2 = 2*input2;
-end
+% Example 3.4: User Defined Function
+% clear; clc;
+% [out1, out2] = myfunction(10,20);
+% fprintf("out1 = %d\n", out1);
+% fprintf("out2 = %d\n", out2);
+% 
+% function [out1, out2] = myfunction(input1, input2)
+% out1 = 2*input1;
+% out2 = 2*input2;
+% end
 
+%% 
+% Example 3.5: User-Defined Function–Anonymous Function
+clear; clc;
+
+myfunc = @(x) 2*x+3;
+myfunc(2)
+
+%%
+% Example 3.6: User-Defined Function for Solving Quadratic Equation
+clear; clc;
+
+%Quadratic Equation: 2x^2 + 3x + 5 = 0
+a = 2; b = 3; c = 5;
+[x1, x2] = quad_roots(a, b, c)
+
+function [x1, x2] = quad_roots(a, b, c)
+x1 = (-b + sqrt(b^2 - 4*a*c))/(2*a);
+x2 = (-b - sqrt(b^2 - 4*a*c))/(2*a);
+end
