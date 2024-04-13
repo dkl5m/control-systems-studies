@@ -118,6 +118,48 @@ legend('Taylor series up to 4th order',...
 title('Taylor series of 2*sin(x) at a = 0.5');
 
 %%
+% Example 4.8: Equilibrium Points
+% Two differential equation
+% dy/dt = 4x^2-xy
+% dx/dt = 2y-x^2
+% Determine the equilibrium points of the system
+% For determining equilibrium points consider,
+% dy/dt = 0 and dx/dt = 0
+% The solution x and y will be the equilibrium points of the system
+
+clc; close all; clear;
+syms x y
+[solx,soly] = solve(4*x^2-x*y == 0, 2*y-x^2 == 0);
+disp('Equilibrium points:')
+E_point1=[solx(1), soly(1)]
+E_point2=[solx(2), soly(2)]
+
+
+%%
+% Example 4.9: Energy Calculation
+% Real power, P = 10 W
+% Reactive power, Q = 20 VAR
+% Time, t = 24 hours = 86400 sec
+% Aparent power, S is a complex number
+% Electrical energy, E = P*t
+
+clc; close all; clear;
+P = 10; Q = 20; t = 86400;
+% Rectangular form
+S_rec=complex(P,Q);
+disp('Apparent power in rectangular form:');
+S_rec
+% Polar form
+S_mag=abs(S_rec);
+S_angle=angle(S_rec)*(180/pi); % unit: Degree
+S_polar=[S_mag,S_angle];
+disp("Apparent power in polar form - [Magnitude Angle(Degree)]:");
+S_polar
+% Electrical energy
+E=P*t;
+disp(['Electrical energy: ',num2str(E),' Joule']);
+
+%%
 % Example 4.4: Eulers Series for Solving Initial Value Problem
 
 clc; clear;
