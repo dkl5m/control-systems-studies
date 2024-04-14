@@ -160,6 +160,55 @@ E=P*t;
 disp(['Electrical energy: ',num2str(E),' Joule']);
 
 %%
+% Example 4.10: Impedance Calculation
+% Voltage, V = 100<60
+% Current, I = 3<30
+% Impedance, Z = V/I
+V_mag = 100;
+V_angle = 60;
+I_mag = 3;
+I_angle = 30;
+% Retangular form
+[Vx,Vy]=pol2cart(V_angle,V_mag);
+V_rec=Vx+1i*Vy;
+[Ix,Iy]=pol2cart(I_angle,I_mag);
+I_rec=Ix+1i*Iy;
+Z_rec=V_rec/I_rec;
+disp('Impedance in rectangular form:');
+Z_rec
+% Polar form
+Z_mag=abs(Z_rec);
+Z_angle=angle(Z_rec)*(180/pi); % Unit: Degree
+Z_polar=[Z_mag,Z_angle];
+disp('Impedance in polar form [Magnitude Angle(Degree)]:');
+Z_polar
+
+%%
+% Example 4.11: Impedance Calculation
+% Resistance, R = 5 ohms
+% Capacitance, C = 2 micro F
+% Inductance, L = 15 mH
+% Frequency, f = 60Hz
+% Impedance, Z = R+jX=R+J(X_L-X_C)
+% Here,
+% X_L = Inductive Reactance = omega*L = 2*pi*f*L
+% X_C = Capacitive Reactance = 1/(omega*C) = -1/(2*pi*f*C)
+
+R = 5; L = 15*10^(-3); C = 2*10^(-6); f = 60;
+X_L = 2*pi*f*L;
+X_C = -1/(2*pi*f*C);
+% Retangular form
+Z_rec=R+1i*(X_L-X_C);
+disp('Impedance in rectangular form:');
+Z_rec
+% Polar form
+Z_mag=abs(Z_rec);
+Z_angle=angle(Z_rec)*(180/pi); % Unit: Degree
+Z_polar=[Z_mag,Z_angle];
+disp('Impedance in polar form [Magnitude Angle(Degree)]:');
+Z_polar
+
+%%
 % Example 4.4: Eulers Series for Solving Initial Value Problem
 
 clc; clear;
