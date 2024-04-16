@@ -69,3 +69,42 @@ grid on;
 % ylabel('Load (MW)');
 % title('Load curve in MW')
 % legend('Base load', 'Shoulder load', 'Peak load', 'Location','northwest');
+
+%%
+% Example 5.7: Surface Plot
+% clc; clear; close all;
+
+% % Surface plot
+% % Data: Electricity day-ahead market price (2019)
+% % LMP: Local Marginal Price ($/MW)
+% % Day: Jan-01-2019 to Jan-07-2019
+% % Hour: 24 hours
+%LMP=xlsread('surface2.xlsx');
+% Day=1:7;
+% Hour=1:24;
+% [DAY,HOUR]=meshgrid(Day,Hour);
+% surf(DAY,HOUR,LMP');
+% colorbar
+% xlabel('Days (Jan 1 - Jan 7)');
+% xlabel('Hours');
+% xlabel('Price ($/MW)');
+% title('Electricity day-ahead market price (2019)');
+
+
+%%
+% Example 5.8: Pie Plot
+clc; clear; close all;
+
+% Pie plot
+% Data: Electricity consumption by different sectors in USA (2018)
+% x: Percentage of consumption in four different sectors in USA
+x = [35.4,25.9,2,38.5];
+subplot(1,2,1);
+pie(x);
+title('Without explode feature')
+subplot(1,2,1);
+explode=[1,1,1,1];
+pie(x,explode);
+title('With explode feature');
+labels = {};
+legend(labels,'Location','best');
