@@ -52,3 +52,35 @@ syms x
 x_val = solve(2*x^2+4*x+5==0,x);
 disp('The solutions are:')
 x_val
+
+
+%%
+% Example 6.5: “Solve” Function
+% Two quadratic equations
+% 2x^2+4xy+5=0
+% 3y^2+5xy-2=0
+% Determine the values of x and y
+clc;clear;
+syms x y
+[x_val,y_val]=solve(2*x^2+4*x*y+5==0,3*y^2+5*x*y-2==0);
+disp('The solutions are:');
+disp('x =');
+disp(x_val);
+disp('y =');
+disp(y_val);
+
+
+%%
+% Example 6.6: First-Order Differential
+% 1st order differential equation
+% dy/dx=2*x+y;
+% Solve the differential equation
+clc;clear;
+syms y(x)
+diff_eq = diff(y,x) == 2*x+y;
+disp('Solution without initial condition:')
+Sol_y(x) = dsolve(diff_eq)
+% If the initial condition y(0)=1
+condition = y(0) == 1;
+disp('Solution with initial condition:')
+Sol_y(x) = dsolve(diff_eq, condition)
