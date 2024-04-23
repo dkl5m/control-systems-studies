@@ -84,3 +84,19 @@ Sol_y(x) = dsolve(diff_eq)
 condition = y(0) == 1;
 disp('Solution with initial condition:')
 Sol_y(x) = dsolve(diff_eq, condition)
+
+
+%%
+% Example 6.7: Second-Order Differential
+% 2st order differential equation
+% (dy/dx)^2=2*x^2+3*dy/dx-5;
+% Initial conditions: y(0) = 1; y'(0) = 1;
+% Solve the differential equation
+clc;clear;
+syms y(x)
+diff_eqn = diff(y,x,2) == 2*x^2+3*diff(y,x)-5;
+condition1 = y(0) == 1;
+dy = diff(y,x);
+condition2 = dy(0) == 1;
+condition = [condition1, condition2];
+Sol_y(x) = dsolve(diff_eqn, condition)
