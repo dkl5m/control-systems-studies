@@ -112,4 +112,4 @@ syms x y
 F = 2*x^2+y-5;
 P_diff=diff(F,x);
 disp('Solution:')
-Sol_x=solve(P_diff-x^2==0,x)
+Sol
