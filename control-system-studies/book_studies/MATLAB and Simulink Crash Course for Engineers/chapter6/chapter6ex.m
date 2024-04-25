@@ -88,7 +88,7 @@ Sol_y(x) = dsolve(diff_eq, condition)
 
 %%
 % Example 6.7: Second-Order Differential
-% 2st order differential equation
+% 2nd order differential equation
 % (dy/dx)^2=2*x^2+3*dy/dx-5;
 % Initial conditions: y(0) = 1; y'(0) = 1;
 % Solve the differential equation
@@ -100,6 +100,25 @@ dy = diff(y,x);
 condition2 = dy(0) == 1;
 condition = [condition1, condition2];
 Sol_y(x) = dsolve(diff_eqn, condition)
+
+
+%%
+% Example 6.8: Third-Order Differential
+% 3rd order differential equation
+% (dy/dx)^3=3*x^2+3*dy/dx^2-2*dy/dx+1;
+% Initial conditions: y(0) = 1; y'(0) = 0; y''(0) = 1;
+% Solve the differential equation
+clc;clear;
+syms y(x)
+diff_eqn = diff(y,x,2) == 2*x^2+3*diff(y,x)-5;
+dy = diff(y,x);
+d2y = diff(y,x,2);
+condition1 = y(0) == 1;
+condition2 = dy(0) == 0;
+condition3 = d2y(0) == 1;
+condition = [condition1 condition2 condition3];
+Sol_y(x) = dsolve(diff_eqn, condition)
+
 
 %%
 % Example 6.9: Partial Differential Equation
@@ -113,3 +132,36 @@ F = 2*x^2+y-5;
 P_diff=diff(F,x);
 disp('Solution:')
 Sol_x=solve(P_diff-x^2==0,x)
+
+
+%%
+% Example 6.10: Single Variable Integral Equation
+% Integral equation
+% Integral [2*x^2].dx - 3x = 0
+% without limit
+clc; clear;
+syms x y
+I1=int(2*x^2,x);
+disp('The solution without limit:')
+x_sol=solve(I1-3*x==0,x)
+% With limit of [0 2]
+I2=int(2*x^2,x,0,2);
+disp('The solution without limit:')
+x_sol=solve(I2-3*x==0,x)
+
+
+%%
+% Example 6.11: Multivariable Integral Equation
+% Integral equation
+% Integral [x^2+exp(y)].dx = 0
+% without limit
+clc; clear;
+syms x y
+I1=int(x^2+exp(y),x);
+disp('The solution without limit:')
+y_sol=solve(I1==0,y)
+% With limit of [0 2]
+I2=int(x^2+exp(y),x,0,1);
+disp('The solution without limit:')
+y_sol=solve(I2==0,y)
+
