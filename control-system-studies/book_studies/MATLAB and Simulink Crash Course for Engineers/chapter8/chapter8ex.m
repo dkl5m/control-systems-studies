@@ -48,3 +48,23 @@ Rd2= (Ry1*Ry2+Ry2*Ry3+Ry3*Ry1)/(Ry2);
 Rd3= (Ry1*Ry2+Ry2*Ry3+Ry3*Ry1)/(Ry1);
 fprint('Equivalent delta configured resistances:\n');
 fprint('Rd1= %f  Rd2= %f  Rd3= %f\n',Rd1,Rd2,Rd3);
+
+%%
+% Example 8.5: Equivalent Resistance with Delta-Wye Conversion
+% Equivalent resistance with Delta-wye conversion
+% R1,R2,R3: Delta configuration
+% First step: Conversion into wye configuration
+% Hence, find Ry1,Ry2,Ry3
+% Second step: Find Rs1 and Rs2
+% Third step: Find Rp
+% Fourth step: Find overall equivalent resistance, Req
+clc; close; clear;
+R1=2; R2=4; R3=6; R4=3; R5=2;
+Ry1= (Rd1*Rd2)/(Rd1+Rd2+Rd3);
+Ry2= (Rd1*Rd3)/(Rd1+Rd2+Rd3);
+Ry3= (Rd3*Rd2)/(Rd1+Rd2+Rd3);
+Rs1= Ry2+R4;
+Rs2= Ry3+R5;
+Rp= (Rs1*Rs2)/(Rs1+Rs2);
+Req= Ry1+Rp;
+fprintf('The equivalent resistance: %.3f ohms\n', Req);
