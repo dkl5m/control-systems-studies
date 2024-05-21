@@ -98,3 +98,40 @@ VR3=I2*R3;
 fprintf('The voltage across R1, VR1= %.3f V\n',VR1);
 fprintf('The voltage across R2, VR2= %.3f V\n',VR2);
 fprintf('The voltage across R3, VR3= %.3f V\n',VR3);
+
+%%
+% Example 8.7: Voltage divider
+% R1=2 ohms; R2=4 ohms; R3=8 ohms; E=24 V
+% Determine voltage across resistance R2 and R3
+clc; clear;
+R1=2;R2=4;R3=8;E=24;
+VR2=(R2/(R1+R2+R3))*E;
+VR3=(R3/(R1+R2+R3))*E;
+fprintf('Voltage across resistance R2, VR2= %.3f V\n',VR2);
+fprintf('Voltage across resistance R3, VR3= %.3f V\n',VR3);
+
+%%
+% Example 8.8: Current divider
+% R1=2 ohms; R2=4 ohms; I=16 A
+% Determine current through resistance R1 and R2
+clc; clear;
+R1=2;R2=4;I=16;
+I1=(R2/(R1+R2))*I;
+I2=(R1/(R1+R2+R3))*I;
+fprintf('Current through resistance R1, I1= %.3f V\n',I1);
+fprintf('Current through resistance R2, I2= %.3f V\n',I2);
+
+%%
+% Example 8.9: Thevenin's theorem
+% R1=4 ohms; R2=2 ohms; R3=3 ohms; RL=5 ohms; V=10 V;
+% Determine: Thevenin's voltage, Vth
+% Determine: Thevenin's equivalent resistance, Rth
+% Determine: Load current, IRL
+clc; clear;
+R1=4;R2=2;R3=3;RL=5;V=10;
+Vth=((R2)/(R1+R2))*V;
+Rth=((R1*R2)/(R1+R2))+R3;
+IRL=Vth/(Rth+RL);
+fprintf('Thevenin voltage: Vth = %.3f V\n',Vth);
+fprintf('Thevenin equivalent resistance: Rth = %.3f ohms\n',Rth);
+fprintf('Load current: IRL= %.3f A\n',IRL);
