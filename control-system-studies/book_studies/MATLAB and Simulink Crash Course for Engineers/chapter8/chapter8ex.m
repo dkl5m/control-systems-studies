@@ -135,3 +135,58 @@ IRL=Vth/(Rth+RL);
 fprintf('Thevenin voltage: Vth = %.3f V\n',Vth);
 fprintf('Thevenin equivalent resistance: Rth = %.3f ohms\n',Rth);
 fprintf('Load current: IRL= %.3f A\n',IRL);
+
+%%
+% Example 8.10: Maximum power transfer theorem
+% Rth=5 ohms; Vth=10 V;
+clc; clear;
+Rth=5; Vth=10;
+RL= 1:1:26;
+for i=1:1:26
+    I(i)=Vth/(Rth+RL(i));
+    Power(i)=I(i)^2*RL(i);
+end
+plot(RL,Power,'o-b','LineWidth',1.2);
+xlabel('Load resistance, R L (Ohms)');
+ylabel('Output power, P (W)');
+title('Maximum power transfer theorem');
+grid on;
+% Maximum power, when RL=Rth
+RL=5;
+P_max=(Vth/(Rth+RL))^2*RL;
+fprintf('Maximum output power= %.3f\n', P_max);
+
+%%
+% Example 8.11: AC Circuit terminologies
+% v(t)=10 sin(2*pi*f*t)
+% f= 60Hz; t=0:0.1 sec
+% Determine: Peak voltage, Vp
+% Determine: Peak to peak voltage, Vpp
+% Determine: RMS voltage, V_rms
+% Determine: Average voltage, V_avg
+% Determine: Instantaneous voltage at T=0.02 sec, V_inst
+clc;clear;
+
+f=60;
+t=0:0.0001:0.1;
+v=2*sin(2*pi*f*t);
+plot(t,v,'o-b','LineWidth',1.5);
+xlabel('Time (sec)');
+ylabel('Voltage (V)');
+ylim([-2.5 2.5]);
+grid on;
+
+Vp=max(abs(v));
+Vpp=2*Vp;
+V_rms=(1/sqrt(2))*Vp;
+V_avg=(2/pi)*Vp;
+T=0.02;
+V_inst=2*sin(2*pi*f*T);
+
+fprintf('Peak voltage: %.3f\n', Vp);
+fprintf('Peak to peak voltage: %.3f\n', Vpp);
+fprintf('RMS voltage: %.3f\n', V_rms);
+fprintf('Average voltage: %.3f\n', V_avg);
+fprintf('Instantaneous voltage at T=0.02 sec: %.3f\n', V_inst);
+
+%%
