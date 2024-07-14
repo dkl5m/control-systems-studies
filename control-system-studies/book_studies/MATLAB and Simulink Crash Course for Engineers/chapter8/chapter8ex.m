@@ -189,7 +189,8 @@ fprintf('RMS voltage: %.3f\n', V_rms);
 fprintf('Average voltage: %.3f\n', V_avg);
 fprintf('Instantaneous voltage at T=0.02 sec: %.3f\n', V_inst);
 
-%% Example 8.12: Impedance
+%%
+% Example 8.12: Impedance
 % R= 10 ohms; L= 0.02 H; C= 0.05 F; f= 60Hz
 % Determine impedance: Z
 % Power factor: PF
@@ -210,3 +211,68 @@ fprintf('|Z|=%.3f ohms; Phase angle= %.3f degree\n',...
     Imp_magnitude, Phase_angle);
 PF=cos(Phase_angle);
 fprintf('Power factor: %.3f\n', PF);
+
+%%
+% Example 8.13: Power Triangle
+% Find Apparent power, S
+% Find Power factor, PF
+% Example 1: Real power, P = 10 W, Reactive power, Q = 5 Var
+clc;clear;
+
+fprintf('Example 1: Positive reactive power\n');
+fprintf('----------------------------------\n');
+P=10; Q=5;
+disp('Apparent power:')
+S=P+j*Q
+S_mag=abs(S);
+S_angle=angle(S)*(180/pi);
+fprintf('Apparent power in polar form:\n');
+fprintf('|S|= %.3f VA Power angle: %.3f degree\n',S_mag,S_angle);
+PF=cos(S_angle);
+if Q>0
+    fprintf('Power factor= %.3f; Lagging\n', PF);
+elseif Q<0
+    fprintf('Power factor= %.3f; Lagging\n', PF);
+else
+    fprintf('Power factor= %.3f; Unity\n', PF);
+end
+fprintf('\n')
+
+% Example 2: Real power, P = 10 W, Reactive power, Q = -5 Var
+fprintf('Example 2: Negative reactive power\n');
+fprintf('----------------------------------\n');
+P=10; Q=-5;
+disp('Apparent power:')
+S=P+j*Q
+S_mag=abs(S);
+S_angle=angle(S)*(180/pi);
+fprintf('Apparent power in polar form:\n');
+fprintf('|S|= %.3f VA Power angle: %.3f degree\n',S_mag,S_angle);
+PF=cos(S_angle);
+if Q>0
+    fprintf('Power factor= %.3f; Lagging\n', PF);
+elseif Q<0
+    fprintf('Power factor= %.3f; Lagging\n', PF);
+else
+    fprintf('Power factor= %.3f; Unity\n', PF);
+end
+fprintf('\n')
+
+% Example 3: Real power, P = 10 W, Reactive power, Q = 0 Var
+fprintf('Example 3: Zero reactive power\n');
+fprintf('----------------------------------\n');
+P=10; Q=0;
+disp('Apparent power:')
+S=P+j*Q
+S_mag=abs(S);
+S_angle=angle(S)*(180/pi);
+fprintf('Apparent power in polar form:\n');
+fprintf('|S|= %.3f VA Power angle: %.3f degree\n',S_mag,S_angle);
+PF=cos(S_angle);
+if Q>0
+    fprintf('Power factor= %.3f; Lagging\n', PF);
+elseif Q<0
+    fprintf('Power factor= %.3f; Lagging\n', PF);
+else
+    fprintf('Power factor= %.3f; Unity\n', PF);
+end
