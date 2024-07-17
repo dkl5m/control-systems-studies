@@ -308,9 +308,9 @@ I_BC_ang=angle(I_BC)*(180/pi);
 I_CA_mag=abs(I_CA);
 I_CA_ang=angle(I_CA)*(180/pi);
 fprintf('Phase currents:\n');
-fprintf('I_AB=%.3f A    Angle=%.3f degree\n',I_AB_mag,I_AB_angle);
-fprintf('I_BC=%.3f A    Angle=%.3f degree\n',I_BC_mag,I_BC_angle);
-fprintf('I_CA=%.3f A    Angle=%.3f degree\n',I_CA_mag,I_CA_angle);
+fprintf('I_AB=%.3f A    Angle=%.3f degree\n',I_AB_mag,I_AB_ang);
+fprintf('I_BC=%.3f A    Angle=%.3f degree\n',I_BC_mag,I_BC_ang);
+fprintf('I_CA=%.3f A    Angle=%.3f degree\n',I_CA_mag,I_CA_ang);
 
 % Line currents
 I_A=I_AB-I_CA;
@@ -323,6 +323,107 @@ I_B_ang=angle(I_B)*(180/pi);
 I_C_mag=abs(I_C);
 I_C_ang=angle(I_C)*(180/pi);
 fprintf('Line currents:\n');
-fprintf('I_A=%.3f A    Angle=%.3f degree\n',I_A_mag,I_A_angle);
-fprintf('I_B=%.3f A    Angle=%.3f degree\n',I_B_mag,I_B_angle);
-fprintf('I_C=%.3f A    Angle=%.3f degree\n',I_C_mag,I_C_angle);
+fprintf('I_A=%.3f A    Angle=%.3f degree\n',I_A_mag,I_A_ang);
+fprintf('I_B=%.3f A    Angle=%.3f degree\n',I_B_mag,I_B_ang);
+fprintf('I_C=%.3f A    Angle=%.3f degree\n',I_C_mag,I_C_ang);
+
+%%
+% Example 8.15: Delta-connected balanced load
+% Line to line voltages:
+% V_AB=120V angle 0deg; V_BC=120V angle 120deg; V_CA=120V angle 240deg;
+% Impedances:
+% Z=10 Ohms angle 10deg
+% Find: Phase currents I_AB; I_BC; I_CA;
+% Find: Line currents I_A; I_B; I_C;
+clc;clear;
+
+% Line to line voltages
+V_AB=120*cos(0)+i*120*sin(0);
+V_BC=120*cos(120*(pi/180))+i*120*sin(120*(pi/180));
+V_CA=120*cos(240*(pi/180))+i*120*sin(240*(pi/180));
+
+% Impedance
+Z=10*cos(10*(pi/180))+i*10*sin((pi/180));
+
+% Phase currents
+I_AB=V_AB/Z;
+I_BC=V_BC/Z;
+I_CA=V_CA/Z;
+I_p=abs(I_AB);
+I_AB_ang=angle(I_AB)*(180/pi);
+I_BC_ang=angle(I_BC)*(180/pi);
+I_CA_ang=angle(I_CA)*(180/pi);
+fprintf('Phase currents:\n');
+fprintf('I_AB=%.3f A    Angle=%.3f degree\n',I_p,I_AB_ang);
+fprintf('I_BC=%.3f A    Angle=%.3f degree\n',I_p,I_BC_ang);
+fprintf('I_CA=%.3f A    Angle=%.3f degree\n',I_p,I_CA_ang);
+
+% Line currents
+I_A=I_AB-I_CA;
+I_B=I_BC-I_AB;
+I_C=I_CA-I_BC;
+I_l=abs(I_A);
+I_A_ang=angle(I_A)*(180/pi);
+I_B_ang=angle(I_B)*(180/pi);
+I_C_ang=angle(I_C)*(180/pi);
+fprintf('Line currents:\n');
+fprintf('I_A=%.3f A    Angle=%.3f degree\n',I_l,I_A_ang);
+fprintf('I_B=%.3f A    Angle=%.3f degree\n',I_l,I_B_ang);
+fprintf('I_C=%.3f A    Angle=%.3f degree\n',I_l,I_C_ang);
+
+%%
+% Example 8.16: Wye connected four wire unbalanced load
+% Phase voltages:
+% V_AN=120V angle 0deg; V_BN=110V angle 120deg; V_CN=150V angle 240deg;
+% Impedances:
+% Z1=10 Ohms angle 10deg; Z2=15 Ohms angle -25deg; Z3=20 Ohms angle -10deg; 
+% Find: Line to line voltages: V_AB; V_BC; V_CA;
+% Find: Phase currents I_AN; I_BN; I_CN;
+% Find: Line currents I_A; I_B; I_C;
+clc;clear;
+
+% Phase voltages
+V_AN=120*cos(0)+i*120*sin(0);
+V_BN=110*cos(120*(pi/180))+i*110*sin(120*(pi/180));
+V_CN=150*cos(240*(pi/180))+i*150*sin(240*(pi/180));
+
+% Impedances
+Z1=10*cos(10*(pi/180))+i*10*sin((pi/180));
+Z2=15*cos(-25*(pi/180))+i*15*sin(-25*(pi/180));
+Z3=20*cos(-10*(pi/180))+i*20*sin(-10*(pi/180));
+
+% Line to line voltages
+V_AB=V_AN-V_BN;
+V_BC=V_BN-V_CN;
+V_CA=V_CN-V_AN;
+V_AB_mag=abs(V_AB);
+V_AB_ang=angle(V_AB)*(180/pi);
+V_BC_mag=abs(V_BC);
+V_BC_ang=angle(V_BC)*(180/pi);
+V_CA_mag=abs(V_CA);
+V_CA_ang=angle(V_CA)*(180/pi);
+fprintf('Phase currents:\n');
+fprintf('V_AB=%.3f A    Angle=%.3f degree\n',V_AB_mag,V_AB_ang);
+fprintf('V_BC=%.3f A    Angle=%.3f degree\n',V_BC_mag,V_BC_ang);
+fprintf('V_CA=%.3f A    Angle=%.3f degree\n',V_CA_mag,V_CA_ang);
+
+% Phase currents
+I_AN=V_AN/Z1;
+I_BN=V_BN/Z2;
+I_CN=V_CN/Z3;
+I_AN_mag=abs(I_AN);
+I_AN_ang=angle(I_AN)*(180/pi);
+I_BN_mag=abs(I_BN);
+I_BN_ang=angle(I_BN)*(180/pi);
+I_CN_mag=abs(I_CN);
+I_CN_ang=angle(I_CN)*(180/pi);
+fprintf('Phase currents:\n');
+fprintf('I_AN=%.3f A    Angle=%.3f degree\n',I_AN_mag,I_AN_ang);
+fprintf('I_BN=%.3f A    Angle=%.3f degree\n',I_BN_mag,I_BN_ang);
+fprintf('I_CN=%.3f A    Angle=%.3f degree\n',I_CN_mag,I_CN_ang);
+
+% Line currents
+fprintf('Line currents:\n');
+fprintf('I_A=%.3f A    Angle=%.3f degree\n',I_AN_mag,I_AN_ang);
+fprintf('I_B=%.3f A    Angle=%.3f degree\n',I_BN_mag,I_BN_ang);
+fprintf('I_C=%.3f A    Angle=%.3f degree\n',I_CN_mag,I_CN_ang);
