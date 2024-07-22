@@ -579,3 +579,16 @@ fprintf('I_A=%.3f A    Angle=%.3f degree\n',I_A_mag,I_A_ang);
 fprintf('I_B=%.3f A    Angle=%.3f degree\n',I_B_mag,I_B_ang);
 fprintf('I_C=%.3f A    Angle=%.3f degree\n',I_C_mag,I_C_ang);
 
+%%
+% Example 8.20: Inverting amplifier
+% Input voltage: V_in=40V;
+% Resistances: R1=4 Ohms; R2=2 Ohms;
+% Find: Output voltage, V_out;
+% Find: Gain, G;
+clc;clear;
+
+V_in=40; R1=4; R2=2;
+V_out=-(R2/R1)*V_in;
+G=V_out/V_in;
+fprintf('Output voltage: %.2f V\n', V_out);
+fprintf('Gain: %.2f V\n', G);
