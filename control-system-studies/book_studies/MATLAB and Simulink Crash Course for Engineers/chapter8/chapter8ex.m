@@ -606,3 +606,26 @@ V_out=(1+R2/R1)*V_in;
 G=V_out/V_in;
 fprintf('Output voltage: %.2f V\n', V_out);
 fprintf('Gain: %.2f V\n', G);
+
+%%
+% Example 8.22: Differentiator circuit
+% R\=5 Ohms; C=0.5 F;
+% Input signal: v(t)=2sin(t);
+% Find: Output signal, v_out(t);
+% Find: Output at t=0.1 sec;
+% Find: I_R and I_C at t=0.1 sec;
+clc;clear;
+
+R=5;C=0.5;
+syms t
+v=@(t) 2*sin(t);
+v_out=@(t) -R*C*diff(v,t);
+fprintf('The output signal:\n');
+disp(v_out(t))
+v_out=limit(v_out,t,0.1);
+fprintf('The output voltage at t=0.1 sec: %.5f V\n\n', v_out);
+
+I_R=-v_out/R;
+I_C=limit(C*diff(v,t),t,0.1);
+fprintf('I_F at t=0.1 sec: %.5f A\n\n', I_F);
+fprintf('I_C at t=0.1 sec: %.5f A\n\n', I_C);
