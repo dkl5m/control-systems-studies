@@ -16,11 +16,12 @@ clc;clear;
 
 syms t s
 g=@(t) exp(3*t)*sin(6*t);
-disp('Laplace transform:');
+disp('Laplace transform:')
 G(s)=laplace(g(t))
 
 %%
-% Example 9.3. Inverse Laplace Transform
+% Example 9.3.  Laplace Transform of Initial Value
+% Problem with Differential Equation
 % 3*y'''(t) + 2*y''(t) + 3*y();
 % Initial condition: y(0)=0;y'(0)=0;y''(0)=;
 clc;clear;
@@ -35,3 +36,12 @@ Y3=@(s) s^3*Y-s^2*y0-s*dy0-dy20;
 % Differential equation
 eqn=3*Y3(s)+2*Y2(s) + 3*Y - laplace(1,s);
 solve(eqn,Y)
+
+%%
+% Example 9.4. Inverse Laplace Transform
+clc;clear;
+
+syms t s
+G=@(t) 6/((s-3)^2+36);
+disp('Inverse laplace transform:')
+g(t)=ilaplace(G(s))
