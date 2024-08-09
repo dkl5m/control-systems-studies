@@ -77,7 +77,21 @@ disp('The partial fraction expansion:')
 disp(Expan(s))
 
 %%
-% Example 9.7. Partial fraction - 4
+% Example 9.7. Partial fraction - 3
+% Fraction: (2s^2+2s+1)/(2s^2+4s+3)
+% Higher degree of Numerator = Higher degree of Denominator
+clc;clear;
+
+syms t s
+N = [2 2 1];
+D = [2 4 3];
+disp('The residuals:')
+[r,p,k] = residue(N,D)
+Expan=@(s) r(1)/(s-p(1)+r(2)/(s-p(2)))+k;
+disp('The partial fraction expansion:')
+disp(Expan(s))
+%%
+% Example 9.8. Partial fraction - 4
 % Fraction: (2s^3+4s^2+3s+1)/(1s^2+2s+1)
 % Higher degree of Numerator = Higher degree of Denominator
 clc;clear;
