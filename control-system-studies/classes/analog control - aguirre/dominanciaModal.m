@@ -72,3 +72,17 @@ figure(1)
 set(gca,'Fontsize',16)
 plot(t,y,'k',t,yos,'r',t,yex,'b')
 xlabel('t')
+
+% Dominancia modal II
+% modelos reduzidos
+% modelo reduzido de primeira ordem
+numred1 = numex*Kcc*denex(end)/numex(end);
+yred1 = step(numred1,denex,t);
+% modelo reduzido de segunda ordem
+numred2 = numos*Kcc*denos(end)/numos(end);
+yred2 = step(numred2,denos,t);
+
+figure(2)
+set(gca,'Fontsize',16)
+plot(t,y,'k',yred1,'r',t,yred2,'b')
+xlabel('t')
