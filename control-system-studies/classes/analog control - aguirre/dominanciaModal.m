@@ -2,7 +2,7 @@
 %Ex.1
 close all; clear
 
-j = sqrt(-1);
+i = sqrt(-1);
 % 2 polos em s = -0.7 +- 1j
 den = conv([1 0.7+1i],[1 0.7-1i]);
 % incluir polo real em s = -2
@@ -39,7 +39,7 @@ xlabel('t')
 %Ex.2
 close all; clear
 
-j = sqrt(-1);
+i = sqrt(-1);
 % 2 polos em s = -0.7 +- 1j
 den = conv([1 0.7+1i],[1 0.7-1i]);
 % incluir polo real em s = -2
