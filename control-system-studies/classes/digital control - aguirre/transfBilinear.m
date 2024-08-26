@@ -1,4 +1,6 @@
 % Transformacao bilinear
+close all;clear;
+
 T = 1; sigma = 0; j = sqrt(-1); % inicializacao
 omega = 0:pi/50:2*pi; % faixa de valores de w
 
