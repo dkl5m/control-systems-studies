@@ -21,7 +21,7 @@
 % Praticas 1 e 6 - Matlab Controle Analogico
 
 %%
-clc; close all; clear;
+clc; close; clear;
 
 % VARIAVEIS SISTEMA (motor cc excitacao serie)
 La  = 100*10^(-3);   % indutancia armadura

@@ -17,9 +17,7 @@
 % mostre qual destes tem o melhor resultado usando índices de desempenho
 % IAE, ISE, ITSE, respostas no tempo e na frequencia.
 
-close all, clear all, clc
-
-clc;close;clear;
+clc; close; clear;
 % Parametros conversor buck
 Vi = 10;        % Tensao de entrada (V)
 Vo = 5;         % Tensao de saída (V)

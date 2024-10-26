@@ -9,7 +9,7 @@
 %   tem o melhor resultado usando índices de desempenho IAE, ISE, ITSE,
 %   respostas no tempo e na frequencia.
 
-clc; close all; clear; clf;
+clc; close; clear; clf;
 
 % PARAMETROS MOTOR CC EXCITACAO SERIE
 La = 100*10^(-3);   % indutancia armadura
