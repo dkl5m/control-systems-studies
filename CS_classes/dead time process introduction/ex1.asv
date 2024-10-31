@@ -24,10 +24,9 @@ alpha2 = atand(sigma/0.25);
 alpha3 = atand(sigma/2.25);
 beta = 180 - (alpha1+alpha2+alpha3);
 z = 1.5;
+d1 = 1.06;
 
 d1 = 1.06;
-dp = d1;
-d2 = 0.82;
-d3 = 2.37;
-K = (d1*d2*d3)/dp;
+v
+K = (d1*d2*d3)/dp
 
