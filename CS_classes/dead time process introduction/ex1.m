@@ -1,33 +1,43 @@
 clear; close; clc;
 
-% 2/((s+1)(s+3))
-% max overshoot = 5%
-% e = 0;
-% Cs = Kc(s+a)/s
-% sd = -2 + 2.73j
-% zeta = 0.7
-% sigma = 0.75
-% theta = 45 deg
-% ang(Cs)+ang(G) = 180
-
 num = 2;
 den = conv([1 1],[1 3]);
 
 MP = 0.05;              % max overshoot
 zeta = 0.7;             % damping ratio
-sigma = 0.75;           % 
+sigma = 0.75;            
 t5 = 3/sigma;           % tempo acomodacao 5%
-
 theta = acosd(zeta);
+
+c1 = sigma;
+c2 = 1 - sigma;
+c3 = 3 - sigma;
 alpha1 = 180 - theta;
-alpha2 = atand(sigma/0.25);
-alpha3 = atand(sigma/2.25);
+alpha2 = atand(sigma/c2);
+alpha3 = atand(sigma/c3);
 beta = 180 - (alpha1+alpha2+alpha3);
-z = 1.5;
+o = tan(beta)*sigma;
+cbeta = sigma/tand(beta);
+z = 1 + o;
 
-d1 = 1.06;
-dp = d1;
-d2 = 0.82;
-d3 = 2.37;
-K = (d1*d2*d3)/dp;
+d1 = sqrt((sigma^2)+(c1^2));
+d2 = sqrt((sigma^2)+(c2^2));
+dbeta = sqrt((sigma^2)+(c2+cbeta)^2);
+d3 = sqrt((sigma^2)+(c2+cbeta+c3)^2);
 
+%K = (d1*d2*d3)/dbeta;
+K = 3
+numC =[1 z];
+denC = [1 0];
+G = tf(num,den)
+KG = tf(3*num,den)
+C = tf(K*numC,denC)
+GC = feedback(G*C,1)
+figure
+step(G)
+% figure
+% step(KG)
+figure
+step(C)
+figure
+step(GC)
