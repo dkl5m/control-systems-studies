@@ -45,8 +45,9 @@ step(GC)
 %%
 clear; close; clc;
 
+epsilon = rand;
 num = 2;
-den = conv([1 (1+e)],[1 3]);
+den = conv([1 (1+epsilon)],[1 3]);
 
 MP = 0.05;              % max overshoot
 zeta = 0.7;             % damping ratio
@@ -72,6 +73,6 @@ d3 = sqrt((sigma^2)+(c2+cbeta+c3)^2);
 
 % K = (d1*d2*d3)/dbeta;
 % K = 3
-K = 2 + 2*e
+K = 2 + 2*epsilon
 numC =[1 z];
 denC = [1 0];

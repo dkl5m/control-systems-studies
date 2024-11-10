@@ -8,6 +8,18 @@ A = [M*s^2+b*s+k];
 B = [U];
 
 x = linsolve(A,B)
+
+s=tf('s');
+
+g=1/(s+1)
+figure, step(g)
+
+F =1;
+gm=(1/M)/(s^2+(b/M)*s+(k/M))
+figure, step(gm)
+
+[A,B,C,D]=tf2ss(1,[1 .2 1])
+figure, step(A,B,C,D)
 %%
 
 M1=1;
