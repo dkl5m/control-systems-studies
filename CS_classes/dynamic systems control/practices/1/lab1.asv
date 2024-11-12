@@ -1,3 +1,5 @@
+%% System 
+
 clear; close; clc;
 
 M=1; % mass variable
@@ -37,6 +39,7 @@ k=1; % spring coefficient
 
 
 % Creating state space matrices
+    fprintf('Creating state space matrices:');
     A1 = [0 1;-k/M -b/M];
     B1 = [0 1/M]';
     C1 = [1 0];
@@ -44,9 +47,16 @@ k=1; % spring coefficient
 % Creating state space system
     sys = ss(A1,B1,C1,D1)
     figure, step(sys)
- % [n,d]=ss2tf(A1,B1,C1,D1)
- % sys1=tf(n,d)
- % ltiview('step',sys1)
+    title('3.Plot state space system');
+% Using state space matrices to find TF info
+    [n,d] = ss2tf(A1,B1,C1,D1)
+    sys1 = tf(n,d)
+    ltiview('step',sys1)
+
+% Using TF to find zero, pole and gain info
+    [z1,p1,k1] = tf2zp(n,d)
+% Using TF to find zero, pole and gain info
+    [r2,p2,k2] = residue(n,d)
 
 %%
 
