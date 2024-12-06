@@ -20,7 +20,7 @@ sys = ss(A,B,c,D)
 % step(sys,sys2)
 % legend('sys','sys2')
 
-% [num2,den2] = ss2tf(A,B,c2,D2);
-% sys3 = tf(num2,den2)
-% step(sys3)
+[num2,den2] = ss2tf(A,B,c2,D2);
+sys3 = tf(num2,den2)
+step(sys3)
 
