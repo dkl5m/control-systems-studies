@@ -74,26 +74,23 @@ B1 = [U1; U2];
 
 x_s = linsolve(A1,B1)
 
-% tf
-s = tf('s');
+
 
 % zpk
+% % "tf2zp" (converts a tf into the zero-pole-gain (ZPK) form.)
+% [z, p, k] = tf2zp(b, a);
+% disp('Zeros:');
+% disp(z);
+% disp('Poles:');
+% disp(p);
+% disp('Gain:');
+% disp(k);
 
 
-% "tf2zp" (converts a tf into the zero-pole-gain (ZPK) form.)
-[z, p, k] = tf2zp(b, a);
-disp('Zeros:');
-disp(z);
-disp('Poles:');
-disp(p);
-disp('Gain:');
-disp(k);
-
-
-% "zp2tf" (converts from zero-pole-gain (ZPK) form back to the transfer
-% function (TF) form.)
-[b, a] = zp2tf(z, p, k);
-disp('Numerator coefficients:');
-disp(b);
-disp('Denominator coefficients:');
-disp(a);
+% % "zp2tf" (converts from zero-pole-gain (ZPK) form back to the transfer
+% % function (TF) form.)
+% [b, a] = zp2tf(z, p, k);
+% disp('Numerator coefficients:');
+% disp(b);
+% disp('Denominator coefficients:');
+% disp(a);
