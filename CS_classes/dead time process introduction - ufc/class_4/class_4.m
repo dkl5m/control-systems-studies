@@ -8,7 +8,7 @@ nump = 2;                           % plant numerator
 denp = [3 1];                       % plant denominator
 h = 6.5;                            % transport delay
 G = tf(nump,denp);                  % plant tf
-Gs = tf(nump,denp,'InputDelay',h);  % delayed plant tf
+Gd = tf(nump,denp,'InputDelay',h);  % delayed plant tf
 % figure(1), margin(G);
 % figure(2), margin(Gs);
 
@@ -18,5 +18,5 @@ z = 0.9839;                         % controller zero
 k = 5.3360;                         % controller gain
 s = tf('s');                        % Laplace operator
 C = k*(s+z)/s;                      % PD controller
-Gc = C*G;
+Gc = C*G;                           % controlled plant
 
