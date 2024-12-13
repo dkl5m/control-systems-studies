@@ -1,7 +1,8 @@
+% Class_5 = Arstein Predictor (Discrete)
 clear; close all; clc;
 
-% G(s) = 2/(3s + 1);
-% C = k*(s+z)/s;
+% specs
+% G(s) = 2/(3s + 1); C = k*(s+z)/s;
 % Mp = 0.05; ts = 4;
 
 % Plant variables
@@ -13,12 +14,12 @@ Gs = tf(nump,denp,'InputDelay',h);  % delayed plant tf
 
 % Smith Predictor variables
 % By rootlocus, z = 0.9839
-z = 0.9839;                         % controller's zero
 % By |C*G| = 1, k = 5.3360
+z = 0.9839;                         % controller's zero
 k = 5.3360;                         % controller's gain
 s = tf('s');                        % Laplace's operator
 C = k*(s+z)/s;                      % PD controller
-Gc = C*G;
+Gc = C*G;                           % controlled plant without delay tf
 
 % Arstein Predictor variables
 [A,B,c,D] = tf2ss(nump,denp);       % state-space matrices

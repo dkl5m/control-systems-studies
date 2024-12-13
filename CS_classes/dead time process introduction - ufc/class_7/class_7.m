@@ -1,4 +1,4 @@
-% Class_4 = Filtered Smith Predictor (Continuous)
+% Class_7 = Simplified Filtered Smith Predictor (Discrete)
 clear; close all; clc;
 
 % specs
@@ -21,4 +21,4 @@ s = tf('s');                        % Laplace operator
 C = k*(s+z)/s;                      % PD controller
 Gc = C*G;                           % controlled plant without delay tf
 
-% Filtered Smith Predictor variables
+% Simplified Filtered Smith Predictor variables
