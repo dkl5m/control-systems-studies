@@ -23,6 +23,7 @@ Gc = C*G;                           % controlled plant without delay tf
 
 % Arstein Predictor variables
 [A,B,c,D] = tf2ss(nump,denp);       % state-space matrices
+sysc = ss(A,B,c,D);                 % state-space system
 I = eye(size(A));                   % identity matrix
 % For A−BK to be Hurwitz, 
 % K must be greater than -A.
@@ -31,7 +32,13 @@ K = 6.7*(-A);                       % K adjusted
 kr = (c*((B*K-A)^(-1))*B)^(-1);     % kr adjusted
 
 % Discrete Arstein Predictor variables
-Ts = 0.25;                          % sample time
-hd = h/Ts;                          % discrete delay
-Gd = c2d(G,Ts,'zoh');               % discrete controller
-display(Gd)
+Ts = 0.25;                            % sample time
+hd = h/Ts;                            % discrete delay
+[sysd,Gd] = c2d(sysc,Ts,'zoh');       % discretize continuous system
+[Ad, Bd, Cd, Dd] = ssdata(sysd);      % extract ss matrices
+zo = tf('z',Ts);                      % Z transform's operator
+Kd = Ad;                              % discrete K adjusted
+krd = (Cd*((Bd*Kd-Ad)^(-1))*Bd)^(-1); % discrete kr adjusted
+
+% A eh negativo e Ad positivo
+% krd ta dando negativo, oq nao pode

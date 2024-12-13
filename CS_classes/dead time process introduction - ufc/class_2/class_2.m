@@ -14,7 +14,7 @@ h = 6.5;                            % transport delay
 G = tf(nump,denp);                  % plant tf
 Gd = tf(nump,denp,'InputDelay',h);  % delayed plant tf
 figure(1), margin(G);               % margin of plant
-figure(2), margin(Gs);              % margin of delayed plant
+figure(2), margin(Gd);              % margin of delayed plant
 
 % controller
 % by rootlocus, z = 0.9839
