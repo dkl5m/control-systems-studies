@@ -22,8 +22,10 @@ figure(2), margin(Gd);              % margin of delayed plant
 z = 0.9839;                         % controller's zero
 k = 5.3360;                         % controller's gain
 s = tf('s');                        % Laplace operator
-C = k*(s+z)/s;                      % PI controller
+C = k*(s+z)/s                      % PI controller
 Gc = C*G;                           % controlled plant without delay tf
+Hry = C*G/(1+C*G);
+step(Hry)
 
 % Simulink file simulation:
 % closed loop controlled plant
