@@ -24,8 +24,42 @@ Gc = C*G;                           % controlled plant without delay tf
 % Arstein Predictor variables
 [A,B,c,D] = tf2ss(nump,denp);       % state-space matrices
 I = eye(size(A));                   % identity matrix
-% For A−BK to be Hurwitz, 
-% K must be greater than -A.
+% For A−BK to be Hurwitz
 % Thus, we must adjust K.
-K = 6.7*(-A);                       % K adjusted
-kr = (c*((B*K-A)^(-1))*B)^(-1);     % kr adjusted
+
+% C~=1. output-state relationship must be one. 
+% Transformation is needed, where T is a matrix that make C=1. So:
+T = 1/c;
+Aprime = T^(-1)*A*T;
+Bprime = T^(-1)*B;
+Cprime = c*T;
+Dprime = D;
+
+K = 6*(-A);                       % K adjusted
+kr = (Cprime*((Bprime*K-Aprime)^(-1))*Bprime)^(-1);     % kr adjusted
+
+sim = sim("class_3_simulink.slx");
+ap_time = sim.ap_time;
+ap_c = sim.ap_c;
+ap_u = sim.ap_u;
+ap_y = sim.ap_y;
+
+% plot AP com perturbacao
+figure(6);
+plot(ap_time, ap_u, '--k', 'LineWidth', 1.4), hold on;
+plot(ap_time, ap_c, 'b', 'LineWidth', 1.4);
+plot(ap_time, ap_y, 'r', 'LineWidth', 1.4);
+title('Resposta à entrada em degrau unitário');
+legend('referência','sinal de controle','g(s) com AP'), hold off;
+
+ap_c1 = sim.ap_c1;
+ap_u1 = sim.ap_u1;
+ap_y1 = sim.ap_y1;
+
+% plot AP com perturbacao
+figure(7);
+plot(ap_time, ap_u1, '--k', 'LineWidth', 1.4), hold on;
+plot(ap_time, ap_c1, 'b', 'LineWidth', 1.4);
+plot(ap_time, ap_y1, 'r', 'LineWidth', 1.4);
+title('Resposta à entrada em degrau unitário');
+legend('referência','sinal de controle','g(s) com AP e perturbações'), hold off;

@@ -22,6 +22,10 @@ C = k*(s+z)/s;                      % PD controller
 Gc = C*G;                           % controlled plant without delay tf
 
 % Arstein Predictor variables
+
+% C tem que ser unitario
+% usar transformacao
+
 [A,B,c,D] = tf2ss(nump,denp);       % state-space matrices
 sysc = ss(A,B,c,D);                 % state-space system
 I = eye(size(A));                   % identity matrix
