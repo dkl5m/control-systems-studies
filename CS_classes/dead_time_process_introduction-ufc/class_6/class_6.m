@@ -22,3 +22,29 @@ C = k*(s+z)/s;                      % PD controller
 Gc = C*G;                           % controlled plant without delay tf
 
 % Filtered Smith Predictor variables
+
+% Frequency range (example)
+omega = logspace(-1, 2, 500);  % 500 frequencies between 0.1 and 100 rad/s
+
+% Evaluate C(jw) and G(jw) at each frequency
+Cjw = freqresp(C, 1j*omega);  % C(jw)
+Gjw = freqresp(G, 1j*omega);  % G(jw)
+
+% Compute |M(jw)|
+M = abs(Cjw .* Gjw);  % Example: M(jw) = C(jw) * G(jw) (or other expression)
+
+% Compute |1 + 1 / (C(jw) * G(jw))|
+RightSide = abs(1 + 1 ./ (Cjw .* Gjw));
+
+% Check the inequality at each frequency
+inequality_holds = M < RightSide;
+
+% Plot the results
+figure;
+% plot3(omega, M, 'b', 'LineWidth', 2);
+% hold on;
+% plot3(omega, RightSide, 'r--', 'LineWidth', 2);
+% xlabel('Frequency (rad/s)');
+% ylabel('Magnitude');
+% legend('|M(jw)|', '|1 + 1 / (C(jw) * G(jw))|');
+% grid on;
