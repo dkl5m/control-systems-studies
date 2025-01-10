@@ -92,6 +92,12 @@ plot(fsp_time, fsp_y1, 'r', 'LineWidth', 1.7);
 title('Resposta à entrada em degrau unitário');
 legend('referência','sinal de controle','g(s) com FSP e perturbações'), hold off;
 
+% Índices de Robustez
+W=logspace(-3,3,600);
+w = 1j*W;
+MdP=abs(exp(-lambda*Ln*w)-1); % Incerteza multiplicativa
+% MdP=abs((2.*sin(w.*lambda./2)).*(cos(lambda.*w/2)+j.*sin(lambda.*w./2)));
+%MdP = abs(2*sin(W*lambda/2));
 
 
 % ws = logspace(-1, log10(pi), 1000);
