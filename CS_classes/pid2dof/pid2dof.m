@@ -1,5 +1,9 @@
 clc; clear; close all;
 
+% EXEMPLO
+% Projetar um controlador PID 2DOF
+% ts < 0.5; mp < 10%; tsd < 0.1; mpd < 5%.
+
 t = 0:0.001:1;  % vetor tempo
 K = 5;          % ganho planta
 ts = 0.5;       % tempo acomodacao aa referencia
