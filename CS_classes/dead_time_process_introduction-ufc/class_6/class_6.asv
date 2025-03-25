@@ -5,12 +5,18 @@ clear; close all; clc;
 % G(s) = 2/(3s + 1); C = k*(s+z)/s;
 % Mp = 0.05; ts = 4;
 
+
+
 % Plant variables
 Ts = 0.5;                           % sample time
 s = tf('s');                        % Laplace operator
-G = 2/(3*s+1);                      % nominal plant tf
-h = 6.5;                            % delay
-L = exp(-h);
+G = 2/(3*s+1);                     % nominal plant tf
+G
+nump = 2;                           % plant numerator
+denp = [3 1];                       % plant denominator
+h = 6.5;                            % transport delay
+G = tf(nump,denp);                  % nominal plant tf
+Gd = tf(nump,denp,'InputDelay',h);  % delayed plant tf
 
 % Smith Predictor variables
 % By rootlocus, z = 0.9839
@@ -22,9 +28,8 @@ Gc = C*G;                           % controlled plant without delay tf
 
 % discretization
 Gz = c2d(G,Ts);                     % discretize nominal plant tf
-Cz = c2d(C,Ts);                     % discretize controller
+Gdz = c2d(Gd,Ts);                   % discretize delayed plant tf
 
-% simulation parameters
 Tref = 1;
 initialreferencevalue = 0;
 finalreferencevalue = 1;
