@@ -10,7 +10,7 @@ Ts = 0.5;                           % sample time
 s = tf('s');                        % Laplace operator
 G = 2/(3*s+1);                      % nominal plant tf
 h = 6.5;                            % delay
-L = exp(-h);
+L = exp(-h*s);
 
 % Smith Predictor variables
 % By rootlocus, z = 0.9839
@@ -19,10 +19,13 @@ z = 0.9839;                         % controller zero
 k = 5.3360;                         % controller gain
 C = k*(s+z)/s;                      % PD controller
 Gc = C*G;                           % controlled plant without delay tf
+Fr = 1/((h/2)*s+1);                 % FSP filter try
 
 % discretization
 Gz = c2d(G,Ts);                     % discretize nominal plant tf
 Cz = c2d(C,Ts);                     % discretize controller
+Frz = c2d(Fr,Ts);                   % discretize FSP filter
+Lz = c2d(L,Ts);                     % discretize delay
 
 % simulation parameters
 Tref = 1;
@@ -31,6 +34,7 @@ finalreferencevalue = 1;
 Tdisturbance = 8;
 initialdisturbancevalue = 0;
 finaldisturbancevalue = 1;
+
 
 % % Filtered Smith Predictor variables
 % 
