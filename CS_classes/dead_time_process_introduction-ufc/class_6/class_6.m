@@ -34,7 +34,7 @@ finalreferencevalue = 1;
 Tdisturbance = 8;
 initialdisturbancevalue = 0;
 finaldisturbancevalue = 1;
-
+Tsim = 20;
 
 % % Filtered Smith Predictor variables
 % 
