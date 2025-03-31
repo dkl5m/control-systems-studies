@@ -36,6 +36,39 @@ initialdisturbancevalue = 0;
 finaldisturbancevalue = 1;
 Tsim = 20;
 
+% simulation to workspace
+sim = sim("class_6_simulink.slx");
+cpi_time = sim.cpi_time;            % sim time
+    % Loop 1
+u1 = sim.u1;                        % reference 1
+cSignal1A = sim.cSignal1A;          % control signal 1
+y1 = sim.y1;                        % output 1
+    % Loop 2
+u2 = sim.u2;                        % reference 2
+cSignal2A = sim.cSignal2A;          % control signal 2
+y2A = sim.y2A;                      % output 2
+
+% plot 1st example's Smith Predictor
+    % plot y1
+figure(2)
+subplot(2, 2, 1);
+plot(cpi_time, y1A, 'k', 'LineWidth', 1.7), hold on;
+xlabel('Time (hr.)'); ylabel('y1');
+title('Unit step response with disturbance'), hold off;
+    % plot y2
+subplot(2, 2, 2);
+plot(cpi_time, y2A, 'k', 'LineWidth', 1.7), hold on;
+xlabel('Time (hr.)'); ylabel('y2');
+title('Unit step response with disturbance'), hold off;
+    % plot u1
+subplot(2, 2, 3);
+plot(cpi_time, cSignal1A, 'k', 'LineWidth', 1.7), hold on;
+xlabel('Time (hr.)'); ylabel('u1'), hold off;
+    % plot u2
+subplot(2, 2, 4);
+plot(cpi_time, cSignal2A, 'k', 'LineWidth', 1.7), hold on;
+xlabel('Time (hr.)'); ylabel('u2'), hold off;
+
 % % Filtered Smith Predictor variables
 % 
 % % Frequency range (example)
